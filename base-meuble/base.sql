@@ -22,3 +22,9 @@ create table Style_Materiau(
     idStyle int references Style(id),
     idMateriau int references Materiau(id)
 );
+insert into Materiau(nom) values('materiau1');
+insert into Categorie(nom) values('Categorie1');
+insert into Volume(description,longueur,largeur,hauteur) values ('desc1',2,4,5);
+insert into Style(nom) values ('style1');
+
+insert into Style_Materiau(idStyle,idMateriau) values (1,1);
