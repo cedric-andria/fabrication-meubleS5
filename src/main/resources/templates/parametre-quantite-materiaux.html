@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+     content="width=device-width, initial-scale=1.0">
+    <title>Meuble</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+    <div class="container">
+        <div class="newcontainer">
+            <h2>Insertion paramètres quantités matériaux</h2>
+            <form action="/submitparamformule" method="post" id="form">
+                <label for="categorie" style="font-size: 16px;">Catégorie:</label>
+                    <select name="idCategorie" id="categorie">
+                        <option  th:each="categorie : ${categories}" th:text="${categorie.getNom()}" th:value="${categorie.getId()}"></option>
+                    </select> <br>
+                <label for="style" style="font-size: 16px;">Style:</label>
+                 <select name="idStyle" id="style" >
+                    <option th:each="style : ${styles}" th:text="${style.getNom()}" th:value="${style.getId()}"></option>
+                 </select> <br>
+
+                <label for="volume" style="font-size: 16px;">Volume:</label>
+                 <select name="idVolume" id="volume" > 
+                    <option th:each="volume : ${volumes}" th:text="${volume.getNom()}" th:value="${volume.getId()}"></option>
+                 </select> <br>
+
+                <button type="submit" class="btn btn-primary"
+                 style="font-size: 16px;">Valider</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

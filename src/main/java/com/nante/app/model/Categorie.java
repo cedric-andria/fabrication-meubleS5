@@ -1,8 +1,5 @@
 package com.nante.app.model;
 
-import jakarta.persistence.Transient;
-import java.util.List;
-
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -10,34 +7,25 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.JoinColumn;
-
 @Entity
-public class Style {
+public class Categorie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nom;
-    
-    @ManyToMany
-    @JoinTable(
-        name = "Style_Materiau", joinColumns = @JoinColumn(name = "idStyle"), inverseJoinColumns = @JoinColumn(name = "idMateriau")
-    )
-    private List<Materiau> materiaux;
-    
-    public Style(int id) {
+
+    public Categorie(int id) {
         this.setId(id);
     }
-    public Style() {
+    public Categorie(String nom) {
+        this.setNom(nom);
     }
-    public Style(String nom) {
-        this.nom = nom;
-    }
-    public List<Materiau> getMateriaux() {
-        return materiaux;
-    }
-    public void setMateriaux(List<Materiau> materiaux) {
-        this.materiaux = materiaux;
-    }
+    public Categorie(int id , String nom) {
+        setId(id);
+        setNom(nom);
+    } 
+    public Categorie(){}
+
     public int getId() {
         return id;
     }

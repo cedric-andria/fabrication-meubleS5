@@ -20,6 +20,9 @@ public class Materiau {
     // @ManyToMany(mappedBy = "materiaux")
     // private List<Style> styles;
     
+    public Materiau(int id) {
+        this.setId(id);
+    }
     public Materiau(String nom) {
         this.setNom(nom);
     }

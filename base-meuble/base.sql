@@ -13,10 +13,7 @@ create table Categorie(
 );
 create table Volume(
     id serial primary key,
-    description varchar(500),
-    longueur double precision,
-    largeur double precision,
-    hauteur double precision
+    nom VARCHAR(50)
 );
 create table Style(
     id serial primary key,
@@ -27,6 +24,14 @@ create table Style_Materiau(
     idStyle int references Style(id),
     idMateriau int references Materiau(id),
     constraint id_style_materiau_combination UNIQUE (idStyle, idMateriau)
+);
+create table Formule_meuble(
+    id serial primary key,
+    idCategorie int references Categorie(id),
+    idStyle int references Style(id),
+    idVolume int references Volume(id),
+    idMateriau int references Materiau(id),
+    quantite double precision
 );
 insert into Materiau(nom) values('Bois');
 insert into Materiau(nom) values('Metal');
