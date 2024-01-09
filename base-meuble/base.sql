@@ -62,3 +62,6 @@ insert into Style_Materiau(idStyle, idMateriau) values (2,5);
 
 insert into Style_Materiau(idStyle, idMateriau) values (3,1);
 insert into Style_Materiau(idStyle, idMateriau) values (3,4);
+
+insert into Formule_meuble(idCategorie, idStyle, idVolume, idMateriau, quantite) values (3, 2, 1, 7, 2);
+
