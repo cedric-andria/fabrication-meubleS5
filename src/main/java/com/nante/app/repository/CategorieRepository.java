@@ -8,5 +8,4 @@ import java.lang.Integer;
 import java.util.List;
 
 public interface CategorieRepository extends JpaRepository<Categorie, Integer> {
-    
 }
