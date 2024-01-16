@@ -37,4 +37,9 @@ public class Formule_meubleService {
         return formule_meubleRepository.findByMateriauId(idMateriau);
     }
 
+    public List<Formule_meuble> getFormule_meubles_by_categorie_style_volume(int idCategorie, int idStyle, int idVolume)
+    {
+        return formule_meubleRepository.findByCategorieIdAndStyleIdAndVolumeId(idCategorie, idStyle, idVolume);
+    }
+
 }

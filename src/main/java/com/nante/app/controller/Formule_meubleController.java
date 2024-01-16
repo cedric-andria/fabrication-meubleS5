@@ -59,7 +59,7 @@ public class Formule_meubleController {
         model.addAttribute("idCategorie", idCategorie);
         model.addAttribute("idStyle", idStyle);
         model.addAttribute("idVolume", idVolume);
-        model.addAttribute("materiaux", materiauservice.getAllMateriaux());
+        model.addAttribute("materiaux", styleservice.getById(Integer.parseInt(idStyle)).getMateriaux());
         
         return "insertion-quantite-materiaux";
     }

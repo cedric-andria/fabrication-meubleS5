@@ -7,6 +7,9 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.JoinColumn;
+
+import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.nante.app.model.Materiau;
@@ -20,6 +23,7 @@ public class PrixUnitaireMateriau {
     @JoinColumn(name="idMateriau")
     private Materiau materiau;
     private double montant;
+    private LocalDateTime submit_date;
 
     public PrixUnitaireMateriau(int id) {
         this.id = id;
@@ -28,6 +32,12 @@ public class PrixUnitaireMateriau {
     public PrixUnitaireMateriau(Materiau materiau, double montant) {
         this.materiau = materiau;
         this.montant = montant;
+    }
+
+    public PrixUnitaireMateriau(Materiau materiau, double montant, LocalDateTime submit_date) {
+        this.materiau = materiau;
+        this.montant = montant;
+        this.submit_date = submit_date;
     }
 
     public PrixUnitaireMateriau() {

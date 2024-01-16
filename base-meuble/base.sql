@@ -38,32 +38,41 @@ insert into Materiau(nom) values('Metal');
 insert into Materiau(nom) values('Plastique');
 insert into Materiau(nom) values('Vernis');
 insert into Materiau(nom) values('Polystyrene');
+-- insert into Materiau(nom) values('Tissu');
+-- insert into Materiau(nom) values('Perle');
+-- insert into Materiau(nom) values('Chaine');
 
 insert into Categorie(nom) values('Chaise');
 insert into Categorie(nom) values('Table');
 insert into Categorie(nom) values('Lit');
-
-insert into Volume(description,longueur,largeur,hauteur) values ('desc1',2,4,5);
-
+-- insert into Categorie(nom) values('Canape');
 
 insert into Style(nom) values ('Royal');
-insert into Style(nom) values ('Boheme');
+-- insert into Style(nom) values ('Boheme');
 insert into Style(nom) values ('Scandinave');
+
+-- insert into volume(nom) values ('petit');
+-- insert into volume(nom) values ('moyen');
+-- insert into volume(nom) values ('grand');
 
 
 insert into Style_Materiau(idStyle, idMateriau) values (1,1);
 insert into Style_Materiau(idStyle, idMateriau) values (1,2);
 insert into Style_Materiau(idStyle, idMateriau) values (1,3);
 
-insert into Style_Materiau(idStyle, idMateriau) values (2,1);
-insert into Style_Materiau(idStyle, idMateriau) values (2,3);
-insert into Style_Materiau(idStyle, idMateriau) values (2,4);
-insert into Style_Materiau(idStyle, idMateriau) values (2,5);
+-- insert into Style_Materiau(idStyle, idMateriau) values (2,6);
+-- insert into Style_Materiau(idStyle, idMateriau) values (2,7);
+-- insert into Style_Materiau(idStyle, idMateriau) values (2,8);
 
 insert into Style_Materiau(idStyle, idMateriau) values (3,1);
 insert into Style_Materiau(idStyle, idMateriau) values (3,4);
 
--- insert into Formule_meuble(idCategorie, idStyle, idVolume, idMateriau, quantite) values (3, 2, 1, 7, 2);
+
+-- insert into Formule_meuble(idCategorie, idStyle, idVolume, idMateriau, quantite) values (4, 2, 1, 6, 2);
+-- insert into Formule_meuble(idCategorie, idStyle, idVolume, idMateriau, quantite) values (4, 2, 1, 7, 10);
+-- insert into Formule_meuble(idCategorie, idStyle, idVolume, idMateriau, quantite) values (4, 2, 1, 8, 3);
+
+
 
 create table PrixUnitaireMateriau(
     id serial primary key,
@@ -71,9 +80,13 @@ create table PrixUnitaireMateriau(
     montant double precision,
     submit_date timestamp DEFAULT current_timestamp
 );
-insert into PrixUnitaireMateriau (idMateriau, montant) values (7, 200);
-insert into PrixUnitaireMateriau (idMateriau, montant) values (8, 500);
-insert into PrixUnitaireMateriau (idMateriau, montant) values (9, 1000);
+insert into PrixUnitaireMateriau (idMateriau, montant) values (1, 500);
+insert into PrixUnitaireMateriau (idMateriau, montant) values (2, 700);
+insert into PrixUnitaireMateriau (idMateriau, montant) values (3, 1500);
+
+-- insert into PrixUnitaireMateriau (idMateriau, montant) values (6, 200);
+-- insert into PrixUnitaireMateriau (idMateriau, montant) values (7, 500);
+-- insert into PrixUnitaireMateriau (idMateriau, montant) values (8, 800);
 
 -- SELECT fm.idcategorie,                                                  
 -- fm.idstyle,                                                          
@@ -92,3 +105,27 @@ JOIN (
     GROUP BY idMateriau
 ) latestPrice ON pum.idMateriau = latestPrice.idMateriau AND pum.submit_date = latestPrice.maxDate 
 GROUP BY fm.idCategorie, fm.idStyle, fm.idVolume;
+
+create table AchatMateriau(
+    id serial PRIMARY KEY,
+    idMateriau int REFERENCES Materiau(id),
+    quantite int,
+    date_achat timestamp
+);
+
+CREATE table StockMateriau(
+    id serial primary key,
+    idMateriau int REFERENCES Materiau(id),
+    stock int,
+    date_stock timestamp 
+);
+
+SELECT DISTINCT ON (idMateriau) id, idMateriau, stock, date_stock FROM StockMateriau ORDER BY idMateriau DESC;
+
+create table Fabrication(
+    id SERIAL primary key,
+    idCategorie int REFERENCES Categorie(id),
+    idStyle int REFERENCES Style(id),
+    idVolume int REFERENCES Volume(id),
+    quantite int
+);

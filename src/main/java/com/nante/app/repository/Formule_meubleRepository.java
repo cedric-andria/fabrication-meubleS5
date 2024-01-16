@@ -13,4 +13,7 @@ import java.util.List;
 public interface Formule_meubleRepository extends JpaRepository<Formule_meuble, Integer>
 {
     List<Formule_meuble> findByMateriauId(Integer MateriauId);
+    
+    List<Formule_meuble> findByCategorieIdAndStyleIdAndVolumeId(Integer categorieId, Integer styleId, Integer volumeId);
+
 }

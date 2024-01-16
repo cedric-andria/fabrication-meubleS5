@@ -1,6 +1,7 @@
 .divForm {
-    margin-left: 80px;
+    margin-left: 100px;
     margin-top: 80px;
+    margin-right: 100px;
 }
 
 button {
@@ -15,4 +16,8 @@ label {
 input,select {
     margin-bottom: 10px;
     padding: 2px;
+}
+
+td {
+    font-size: 15px;
 }

@@ -20,6 +20,7 @@ import com.nante.app.service.MateriauService;
 import com.nante.app.service.Style_MateriauService;
 import com.nante.app.service.PrixUnitaireMateriauService;
 import org.springframework.beans.factory.annotation.Autowired;
+import java.time.LocalDateTime;
 
 
 @Controller
@@ -46,7 +47,7 @@ public class PrixUnitaireMateriauController {
         PrixUnitaireMateriau pumateriau = null;
         
         try {
-            pumateriau = new PrixUnitaireMateriau(new Materiau(Integer.parseInt(idMateriau)), Double.parseDouble(montant));
+            pumateriau = new PrixUnitaireMateriau(new Materiau(Integer.parseInt(idMateriau)), Double.parseDouble(montant), LocalDateTime.now());
             pumService.save(pumateriau);
 
             model.addAttribute("materiaux", materiauService.getAllMateriaux());
