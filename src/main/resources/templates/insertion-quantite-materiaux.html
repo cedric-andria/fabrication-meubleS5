@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+     content="width=device-width, initial-scale=1.0">
+    <title>Meuble</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+    <div class="container">
+        <div class="newcontainer">
+            <h2>Insertion quantités matériaux</h2>
+            <form action="/insertnewformule" method="post" id="form">
+                <select name="idMateriau" id="materiaux" style="font-size: 16px;
+                font-family: Arial;">
+                    <option th:each="materiau : ${materiaux}" th:value="${materiau.getId()}" th:text="${materiau.getNom()}">Matériaux</option>
+                </select>
+                <label for="quantite" style="font-size: 16px;">Quantite:</label>
+                <input type="number" name="quantite" id="quantite"> <br>
+                <input type="hidden" name="idCategorie" th:value="${idCategorie}">
+                <input type="hidden" name="idStyle" th:value="${idStyle}"> 
+                <input type="hidden" name="idVolume" th:value="${idVolume}"> 
+                <p><label for="Duree" style="font-size: 16px;">Duree </label>
+                    <input type="text" name="duree_travail">
+                </p>
+                <p><label for="Ouvrier" style="font-size: 16px;">Ouvrier: </label>
+                    <select name="idOuvrier">
+                        <option th:each="ouvrier : ${ouvriers}" th:value="${ouvrier.getId()}" th:text="${ouvrier.getDescription()}"></option>
+                    </select>
+                </p>
+                <button type="submit" class="btn btn-primary"
+                 style="font-size: 16px;">Valider</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
