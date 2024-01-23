@@ -7,33 +7,25 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.JoinColumn;
-import java.util.List;
-
 @Entity
-public class Materiau {
+public class Categorie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     private String nom;
 
-    // @ManyToMany(mappedBy = "materiaux")
-    // private List<Style> styles;
-    
-    public Materiau(int id) {
+    public Categorie(int id) {
         this.setId(id);
     }
-    public Materiau(String nom) {
+    public Categorie(String nom) {
         this.setNom(nom);
     }
-    public Materiau() {
-    }
-    // public List<Style> getStyles() {
-    //     return styles;
-    // }
-    // public void setStyles(List<Style> styles) {
-    //     this.styles = styles;
-    // }
+    public Categorie(int id , String nom) {
+        setId(id);
+        setNom(nom);
+    } 
+    public Categorie(){}
+
     public int getId() {
         return id;
     }

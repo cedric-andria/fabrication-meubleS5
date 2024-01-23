@@ -1,19 +1,48 @@
 package com.nante.app.model;
 
+import jakarta.persistence.Transient;
 import java.util.List;
 
-import com.nante.app.crud.model.GenericModel;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.JoinColumn;
 
-public class Style extends GenericModel {
-    int id ;
-    String nom ;
-    List<Materiau> matieres ;
+@Entity
+public class Style {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String nom;
     
-    public List<Materiau> getMatieres() {
-        return matieres;
+    @ManyToMany
+    @JoinTable(
+        name = "Style_Materiau", joinColumns = @JoinColumn(name = "idStyle"), inverseJoinColumns = @JoinColumn(name = "idMateriau")
+    )
+    private List<Materiau> materiaux;
+    
+    // @ManyToMany
+    // @JoinTable(
+    //     name = "Style_Nb_Ouvrier", joinColumns = @JoinColumn(name = "idStyle"), inverseJoinColumns = @JoinColumn(name = "Ouvrier")
+    // )
+    // private int nb_ouvrier;
+
+    public Style(int id) {
+        this.setId(id);
     }
-    public void setMatieres(List<Materiau> matieres) {
-        this.matieres = matieres;
+    public Style() {
+    }
+    public Style(String nom) {
+        this.nom = nom;
+    }
+    public List<Materiau> getMateriaux() {
+        return materiaux;
+    }
+    public void setMateriaux(List<Materiau> materiaux) {
+        this.materiaux = materiaux;
     }
     public int getId() {
         return id;
