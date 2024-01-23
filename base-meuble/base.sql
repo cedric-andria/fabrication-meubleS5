@@ -155,7 +155,6 @@ CREATE table StockMateriau(
 
 SELECT DISTINCT ON (idMateriau) id, idMateriau, stock, date_stock FROM StockMateriau ORDER BY idMateriau DESC;
 
-
 create table Fabrication(
     id SERIAL primary key,
     idCategorie int REFERENCES Categorie(id),
