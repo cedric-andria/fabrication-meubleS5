@@ -162,3 +162,19 @@ create table Fabrication(
     idVolume int REFERENCES Volume(id),
     quantite int
 );
+
+--23-01-24
+
+create table profil(
+    id serial primary key,
+    description VARCHAR(20),
+    experience int,
+    coefficient_taux_ouvrier int
+);
+create table ouvrier(
+    id serial PRIMARY key,
+    description VARCHAR(20),
+    taux_horaire int,
+    date_embauche date,
+    id_profil int REFERENCES profil(id)
+);
