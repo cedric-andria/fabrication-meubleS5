@@ -175,3 +175,18 @@ create table Fabrication(
     quantite int
 );
 
+--25-01-24
+
+create table genre(
+    id serial PRIMARY key,
+    description VARCHAR(10) UNIQUE
+);
+
+create table vente(
+    id serial PRIMARY KEY,
+    idCategorie int REFERENCES Categorie(id),
+    idStyle int REFERENCES Style(id),
+    idVolume int REFERENCES Volume(id),
+    idGenre int REFERENCES genre(id),
+    quantite int
+);
