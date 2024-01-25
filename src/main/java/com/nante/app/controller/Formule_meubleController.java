@@ -56,6 +56,7 @@ public class Formule_meubleController {
         model.addAttribute("styles", styleservice.getAllStyles());
         model.addAttribute("volumes", volumeservice.getAllVolumes());
 
+
         return "parametre-quantite-materiaux";
     }
 

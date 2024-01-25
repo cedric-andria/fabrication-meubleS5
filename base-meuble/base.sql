@@ -25,11 +25,22 @@ create table Style_Materiau(
     idMateriau int references Materiau(id),
     constraint id_style_materiau_combination UNIQUE (idStyle, idMateriau)
 );
-create table Ouvrier(
+
+create table Profil(
     id serial primary key,
-    description varchar(50),
-    taux_horaire int
+    description VARCHAR(20),
+    experience int,
+    coeff_taux_ouvrier int
 );
+
+create table Ouvrier(
+    id serial PRIMARY key,
+    description VARCHAR(20),
+    taux_horaire int,
+    date_embauche date,
+    id_profil int REFERENCES profil(id)
+);
+
 create table Volume_Nb_Ouvrier (
     id serial primary key,
     idVolume int references Volume(id),
@@ -155,6 +166,7 @@ CREATE table StockMateriau(
 
 SELECT DISTINCT ON (idMateriau) id, idMateriau, stock, date_stock FROM StockMateriau ORDER BY idMateriau DESC;
 
+
 create table Fabrication(
     id SERIAL primary key,
     idCategorie int REFERENCES Categorie(id),
@@ -162,3 +174,4 @@ create table Fabrication(
     idVolume int REFERENCES Volume(id),
     quantite int
 );
+

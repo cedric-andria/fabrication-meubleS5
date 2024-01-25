@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+     content="width=device-width, initial-scale=1.0">
+    <title>Meuble</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="divForm">
+        <h3><u>Insertion profil</u></h3> <br>
+        <form action="/insertnewprofil" method="POST">
+            <label for="description">Description :</label>
+             <input type="text" name="description"> <br>
+            <label for="experience">Expérience réquise:</label>
+             <input type="number" name="experience"><i> Année(s)</i> <br>
+            <label for="coefficient">Coefficient:</label>
+             <input type="number" name="coefficient"> <br>
+
+            <button type="submit" class="myButton btn btn-primary"
+            >Insérer</button>
+        </form>
+    </div>
+</body>
+</html>
