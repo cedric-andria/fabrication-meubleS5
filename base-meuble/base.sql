@@ -38,7 +38,7 @@ create table Ouvrier(
     description VARCHAR(20),
     taux_horaire int,
     date_embauche date,
-    id_profil int REFERENCES profil(id)
+    idprofil int REFERENCES profil(id)
 );
 
 create table Volume_Nb_Ouvrier (
@@ -174,4 +174,32 @@ create table Fabrication(
     idVolume int REFERENCES Volume(id),
     quantite int
 );
+
+
+create table Genre(
+    id serial PRIMARY key,
+    description VARCHAR(10) UNIQUE
+);
+insert into genre (description) values ('Homme');
+insert into genre (description) values ('Femme');
+
+create table Vente(
+    id serial PRIMARY KEY,
+    idCategorie int REFERENCES Categorie(id),
+    idStyle int REFERENCES Style(id),
+    idVolume int REFERENCES Volume(id),
+    idGenre int REFERENCES genre(id),
+    quantite int,
+    date_vente timestamp
+);
+insert into Vente (idCategorie, idStyle, idVolume, idGenre, quantite, date_vente) values (4, 1, 1, 1, 10, now());
+insert into Vente (idCategorie, idStyle, idVolume, idGenre, quantite, date_vente) values (4, 1, 1, 1, 3, now());
+insert into Vente (idCategorie, idStyle, idVolume, idGenre, quantite, date_vente) values (4, 1, 1, 1, 5, now());
+
+insert into Vente (idCategorie, idStyle, idVolume, idGenre, quantite, date_vente) values (4, 1, 1, 2, 2, now());
+insert into Vente (idCategorie, idStyle, idVolume, idGenre, quantite, date_vente) values (4, 1, 1, 2, 8, now());
+
+insert into Vente (idCategorie, idStyle, idVolume, idGenre, quantite, date_vente) values (2, 3, 2, 1, 5, now());
+insert into Vente (idCategorie, idStyle, idVolume, idGenre, quantite, date_vente) values (2, 3, 2, 2, 20, now());
+
 
